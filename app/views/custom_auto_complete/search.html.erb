@@ -1,7 +1,7 @@
-<%= raw @issues.map {|issue| {
-      'id' => issue.id,
-      'label' => "#{issue.value.to_s.truncate(60)} (#{issue.count})",
-      'value' => issue.value
+<%= raw @selected_values.map {|selected_value| {
+      'id' => selected_value,
+      'label' => selected_value,
+      'value' => selected_value
       }
     }.to_json
 %>
