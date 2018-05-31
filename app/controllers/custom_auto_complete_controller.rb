@@ -8,8 +8,13 @@ class CustomAutoCompleteController < ApplicationController
     @selected_values = []
     search = params[:term]
     for value in custom_field.possible_values
-      if value.include?(search)
+      if value =~ /#{search}/i
         @selected_values.push(value)
+      end
+
+      if @selected_values.length > 20
+        @selected_values.push('...')
+        break;
       end
     end
     render :layout => false
